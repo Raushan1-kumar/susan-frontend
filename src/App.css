@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+
+
+
+
+
+
+.java-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f9;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Left Panel */
+.topic-list {
+  width: 30%;
+  background-color: #2d2f55; /* Dark Theme */
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #a683e3; /* Purple Theme */
+}
+
+.category-title {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #e2b714; /* Yellow for emphasis */
+}
+
+.topic-item {
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.topic-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.active {
+  background: #a683e3;
+  font-weight: bold;
+}
+
+/* Right Panel */
+.content-section {
+  width: 70%;
+  padding: 40px;
+  background: white;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content-section h2 {
+  font-size: 26px;
+  color: #5e3bee;
+  margin-bottom: 15px;
+}
+
+.content-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
