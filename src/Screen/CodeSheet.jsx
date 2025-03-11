@@ -44,9 +44,11 @@ useEffect(() => {
       {aiFeedback && <AIFeedbackPage setAiFeedback={setAiFeedback} aiResponse={aiResponse} />}
 
       {/* Main Content */} 
-      <div className="flex flex-cols h-full gap-6 mt-6">
+      <div className="flex flex-col md:flex-row h-full gap-6 mt-6">
+
         {/* Left Section - Problem Statement */}
-        <div className="bg-white pb-20 w-[50%] p-6 shadow rounded-lg">
+          <div className="bg-white pb-20 w-full md:w-1/2 p-6 shadow rounded-lg">
+
           <h2 className="text-2xl font-bold">{problem.title}</h2>
           <div className="flex gap-2 mt-2 text-gray-600">
             {/* <span className="bg-green-200 text-green-700 px-2 py-1 rounded">
@@ -68,7 +70,7 @@ useEffect(() => {
 
           <div className="mt-4 ">
             <h3 className="font-semibold">Example 1:</h3>
-            <pre className="bg-gray-100 p-3 rounded">
+            <pre className="bg-gray-100  overflow-hidden scroll-x-auto p-3 rounded">
               <code>
                 Input: {JSON.stringify(problem.examples[0].input)}
                 <br />
@@ -76,7 +78,7 @@ useEffect(() => {
               </code>
             </pre>
             <h3 className="font-semibold mt-2">Example 2:</h3>
-            <pre className="bg-gray-100 p-3 rounded">
+            <pre className="bg-gray-100 overflow-hidden p-3 rounded">
               {problem.examples[1] && (
                 <code>
                   Input: {JSON.stringify(problem.examples[1].input)}
@@ -98,7 +100,8 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="bg-white w-[50%] p-6  pb-5 shadow rounded-lg">
+          <div className="bg-white w-full md:w-1/2 p-6 pb-5 shadow rounded-lg">
+
           <h2 className="text-xl font-bold mb-2">Write Your Solution</h2>
           <textarea
             className="w-full h-[79%] p-3 border rounded-lg font-mono"

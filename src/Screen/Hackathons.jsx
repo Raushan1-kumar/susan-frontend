@@ -11,9 +11,12 @@ const Hackathons = () => {
   );
 
   return (
-    <div className="flex bg-gray-100 min-h-screen p-6">
+    <div className="flex flex-col md:flex-row bg-gray-100 min-h-screen p-6">
+
+
       {/* Left Sidebar Filters */}
-      <div className="w-1/4 bg-white p-4 rounded-lg shadow-lg">
+      <div className="w-full md:w-1/4 bg-white p-4 rounded-lg shadow-lg">
+
         <h2 className="text-lg font-semibold mb-4">Filters</h2>
 
         <label className="block mb-2 font-medium">Location</label>
@@ -38,7 +41,8 @@ const Hackathons = () => {
       </div>
 
       {/* Main Content */}
-      <div className="w-3/4 ml-6">
+      <div className="w-full md:w-3/4 ml-6">
+
         {/* Search & Sorting */}
         <div className="flex justify-between items-center mb-4">
           <input
@@ -49,7 +53,7 @@ const Hackathons = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <select
-            className="p-2 border rounded-md"
+            className="w-full md:w-auto p-2 border rounded-md"
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
           >

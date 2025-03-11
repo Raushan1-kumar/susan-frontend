@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 const LearningPage = () => {
   const navigate = useNavigate();
 
-  const moveToSection = (id) => {
-    navigate("/java-learning");
-  };
-
   return (
     <div className="bg-gray-100 min-h-screen  p-8 relative">
       {/* Header */}
@@ -24,6 +20,7 @@ const LearningPage = () => {
               key={topic.id}
               onClick={() => navigate(topic.route)}
               className="bg-white p-6 rounded-lg shadow-lg cursor-pointer transition-transform transform hover:scale-105 hover:bg-purple-500 hover:text-white"
+
             >
               <h2 className="text-xl font-semibold">{topic.title}</h2>
               <p className="text-gray-600 mt-2">{topic.description}</p>

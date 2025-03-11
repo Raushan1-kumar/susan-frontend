@@ -1,18 +1,15 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const[title, setTitle]=useState(()=>{
-        const savedTitle=localStorage.getItem('title');
-        return savedTitle?savedTitle:'';
-    });
-
     const [user, setUser] = useState(() => {
+        // Check localStorage on initial load
         const savedUser = localStorage.getItem('user');
         return savedUser ? JSON.parse(savedUser) : null;
     });
 
+    // Save user to localStorage whenever it changes
     useEffect(() => {
         if (user) {
             localStorage.setItem('user', JSON.stringify(user));
@@ -22,16 +19,10 @@ export const UserProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <UserContext.Provider value={{ user, setUser, title, setTitle }}>
+        <UserContext.Provider value={{ user, setUser }}>
             {children}
         </UserContext.Provider>
     );
 };
 
-export const useUser = () => {
-    const context = useContext(UserContext);
-    if (!context) {
-        throw new Error('useUser must be used within a UserProvider');
-    }
-    return context;
-};
+export const useUser = () => useContext(UserContext);

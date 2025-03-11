@@ -15,13 +15,11 @@ export const UserAuth = ({ children }) => {
             }
             setLoading(false);
         };
-
         checkAuth();
-    }, [user, token, navigate]); // Add proper dependencies
+    }, [user, token, navigate]); 
 
     if (loading) {
         return <div>Loading...</div>;
     }
-
     return children;
 };

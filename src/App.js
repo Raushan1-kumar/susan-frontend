@@ -1,6 +1,7 @@
 import "./App.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom"; // Import BrowserRouter and Routes
+import Navbar from "./Screen/Navbar"; // Import Navbar component
 import Login from "./Screen/Login";
 // import { ToastContainer } from 'react-toastify';
 import Home from "./Home";
@@ -27,45 +28,56 @@ import AIML from "./Screen/LearningSection/AIML";
 import DataAnalytics from "./Screen/LearningSection/DataAnalytics";
 import InterviewPreparation from "./Screen/LearningSection/InterviewPreparation";
 import Hackathons from "./Screen/Hackathons";
-import InterviewBranch from "./Screen/InterviewBranch";
-import sqlQuestions from "./Questions/sqlQuestions";
 import SQLQuestions from "./Screen/SQLQuestions";
+import Gamification from "./Screen/Gamification";
+import Footer from "./Screen/Footer";
+import { UserAuth } from "./auth/UserAuth";
 
 function App() {
-  const myRouter = createBrowserRouter([
-    { path: "", Component: Home },
-    { path: "login", Component: Login },
-    { path: "signup", Component: DSAquestion },
-    { path: "dsa-question", Component: DSAquestion },
-    { path: "preparation", Component: Preparation },
-    { path: "code-sheet", Component: CodeSheet },
-    { path: "aptitude", Component: Aptitude },
-    { path: "leaderboard", Component: Leaderboard },
-    { path: "contest-page", Component: ContestPage },
-    { path: "contest-check", Component: CheckDailyContest },
-    { path: "puzzle", Component: Puzzle },
-    { path: "virtual-interview", Component: VirtualInterview },
-    { path: "interview-question", Component: InterviewBranch },
-    { path: "learning", Component: LearningPage },
-    { path: "dsa-learning", Component: DSAlearningPage },
-    { path: "java-learning", Component: JavaLearning },
-    { path: "c-learning", Component: CLearning },
-    { path: "cloud-computing-learning", Component: CloudComputing },
-    { path: "python-learning", Component: PythonLearning },
-    { path: "aptitude-learning", Component: AptitudeLearning },
-    { path: "cyber-security-learning", Component: CyberSecurity },
-    { path: "blockchain-learning", Component: BlockChainLearning },
-    { path: "communication-learning", Component: Communication },
-    { path: "Aiml-learning", Component: AIML },
-    { path: "data-analytics", Component: DataAnalytics },
-    { path: "hackathons", Component: Hackathons },
-    {path:"sql-question",Component:SQLQuestions},
-  ]);
+
   return (
-    <div>
-      <RouterProvider router={myRouter} />
-      {/* <ToastContainer/> */}
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar /> {/* Add Navbar component */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Login />} />
+          <Route path="/dsa-question" element={<DSAquestion />} />
+          <Route path="/preparation" element={<UserAuth><Preparation /></UserAuth>} />
+          <Route path="/code-sheet" element={<CodeSheet />} />
+          <Route path="/aptitude" element={<Aptitude />} />
+          <Route path="/aptitude-learning" element={<AptitudeLearning />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/contest-page" element={<UserAuth><ContestPage /></UserAuth>} />
+          <Route path="/contest-check" element={<CheckDailyContest />} />
+          <Route path="/puzzle" element={<Puzzle />} />
+          <Route path="/virtual-interview" element={<UserAuth><VirtualInterview /></UserAuth>} />
+          <Route
+            path="/interview-question"
+            element={<InterviewPreparation />}
+          />
+          <Route path="/learning" element={<UserAuth><LearningPage /></UserAuth>} />
+          <Route path="/dsa-learning" element={<DSAlearningPage />} />
+          <Route path="/java-learning" element={<JavaLearning />} />
+          <Route path="/c-learning" element={<CLearning />} />
+          <Route
+            path="/cloud-computing-learning"
+            element={<CloudComputing />}
+          />
+          <Route path="/blockchain-learning" element={<BlockChainLearning />} />
+          <Route path="/communication-learning" element={<Communication />} />
+          <Route path="/Aiml-learning" element={<AIML />} />
+          <Route path="/hackathons" element={<Hackathons />} />
+          <Route path="/cyber-security-learning" element={<CyberSecurity />} />
+          <Route path="/data-analytics-learning" element={<DataAnalytics />} />
+          <Route path="/sql-question" element={<SQLQuestions />} />
+          <Route path="/gamification" element={<UserAuth><Gamification /></UserAuth>} />
+          <Route path="/python-learning" element={<PythonLearning />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 

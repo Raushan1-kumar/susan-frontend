@@ -37,9 +37,11 @@ const Aptitude = () => {
   const currentQuestionData = filteredQuestions[currentQuestion] || {};
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 flex">
+    <div className="min-h-screen bg-gray-100 p-4 flex flex-col md:flex-row">
+
       {/* Sidebar */}
-      <div className="w-1/4 bg-white p-4 shadow-md">
+      <div className="w-full md:w-1/4 bg-white p-4 shadow-md">
+
         <h2 className="text-xl font-bold text-blue-600">Topics</h2>
         <ul className="mt-4 space-y-2">
           {topics.map((topic, index) => (
@@ -60,7 +62,8 @@ const Aptitude = () => {
       </div>
 
       {/* Main Content */}
-      <div className="w-3/4 ml-6">
+      <div className="w-full md:w-3/4 md:ml-6">
+
         <nav className="bg-white p-4 shadow-md flex justify-between items-center">
           <h1 className="text-xl font-bold text-blue-600">Aptitude Practice</h1>
           <div className="flex gap-4">
