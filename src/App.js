@@ -32,6 +32,7 @@ import SQLQuestions from "./Screen/SQLQuestions";
 import Gamification from "./Screen/Gamification";
 import Footer from "./Screen/Footer";
 import { UserAuth } from "./auth/UserAuth";
+import SqlTopQuestion from "./Screen/TopQuestionOfInterview/SqlTopQuestion";
 
 function App() {
 
@@ -74,6 +75,7 @@ function App() {
           <Route path="/sql-question" element={<SQLQuestions />} />
           <Route path="/gamification" element={<UserAuth><Gamification /></UserAuth>} />
           <Route path="/python-learning" element={<PythonLearning />} />
+          <Route path="/sql-questions" element={<SqlTopQuestion />} />
         </Routes>
         <Footer />
       </BrowserRouter>
