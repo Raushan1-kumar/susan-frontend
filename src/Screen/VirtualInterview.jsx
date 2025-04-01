@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FaMicrophone, FaRobot } from "react-icons/fa";
 
 const VirtualInterview = () => {
@@ -19,11 +20,24 @@ const VirtualInterview = () => {
   // Function to speak AI question
   const speakQuestion = (text) => {
     const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "en-US" || "hi-IN";
+    speech.lang = "en-US";
     speech.rate = 1;
     setSpeaking(true);
     speech.onend = () => setSpeaking(false);
     window.speechSynthesis.speak(speech);
+  };
+
+  // Send question and user's answer to backend using Axios
+  const sendToBackend = async (question, answer) => {
+    try {
+      const response = await axios.post("/question/interview-question", {
+        question,
+        answer,
+      });
+      console.log("Backend Response:", response.data);
+    } catch (error) {
+      console.error("Error sending data to backend:", error);
+    }
   };
 
   // Start Listening for User Answer
@@ -32,8 +46,10 @@ const VirtualInterview = () => {
     const recognition = new window.webkitSpeechRecognition();
     recognition.lang = "en-US";
     recognition.onresult = (event) => {
-      setAnswer(event.results[0][0].transcript);
+      const userAnswer = event.results[0][0].transcript;
+      setAnswer(userAnswer);
       setListening(false);
+      sendToBackend(question, userAnswer);
     };
     recognition.onerror = () => setListening(false);
     recognition.start();
@@ -46,12 +62,12 @@ const VirtualInterview = () => {
       setNextIndex(newIndex);
       setQuestion(questions[newIndex]);
       speakQuestion(questions[newIndex]);
-      setAnswer(""); // Reset answer
+      setAnswer("");
     }
   };
 
   useEffect(() => {
-    speakQuestion(question); // Speak first question when page loads
+    speakQuestion(question);
   }, []);
 
   return (
